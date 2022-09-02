@@ -5,10 +5,10 @@
         </h2>
     </x-slot>
 
-    <div class="container mx-auto">
-        <form method="POST" action="{{'appointment'}}">
-            @csrf
-            <div>
+    <div class="bg-cyan-600">
+        <div class="place-content-center">
+            <form class="" method="POST" action="{{'appointment'}}">
+                @csrf
                 <div class="mb-4">
                     <label for="firstName">
                         Nume
@@ -30,16 +30,14 @@
                     <br>
                     <input type="number" name="age" placeholder="Varsta"/>
                 </div>
-            </div>
 
-            <div class="flex justify-center">
                 <div>
                     <label for="appointmentDate">
                         Data rezervarii
                     </label>
                     <input
                         type="date"
-                        id="date"w
+                        id="date" w
                         name="appointmentDate"
                         value="<?php echo date('Y-d-m') ?>"
                         min="<?php echo date('Y-d-m') ?>"
@@ -49,7 +47,8 @@
                     <label for="appointmentStartTime">
                         Ora de inceput
                     </label>
-                    <input type="time" id="appointmentStartTime" name="appointmentStartTime" min="09:00" max="21:00"
+                    <input type="time" id="appointmentStartTime" name="appointmentStartTime" min="09:00"
+                           max="21:00"
                            required>
                 </div>
 
@@ -61,21 +60,22 @@
                            required>
                 </div>
                 <div>
-                    <input type="submit" value="Rezerva"/>
+                    <input class="rounded-full border-rose-600" type="submit" value="Trimite rezervarea!"/>
                 </div>
+            </form>
+            <small>Rezervarile se pot face de la 09:00 - 13:00 si de la 15:30 - 21:00 de Luni pana Vineri</small>
+            @if(session('appointment'))
+                <div class="bg-lime-500" role="alert">
+                    <span class="font-medium italic">{{session('appointment')}}</span>
+                </div>
+            @endif
 
-            </div>
-        </form>
-        <small>Rezervarile se pot face de la 09:00 - 13:00 si de la 15:30 - 21:00 de Luni pana Vineri</small>
-        @if(session('appointment'))
-            <div class="bg-lime-500" role="alert">
-                <span class="font-medium italic">{{session('appointment')}}</span>
-            </div>
-        @endif
+
+        </div>
     </div>
 
     <div id="appointmentSelectedDate">
-            Valoare
+        Aici apar orele ocupate in ziua selectata-->
     </div>
 
 </x-app-layout>
