@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AppointmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/appointment',AppointmentController::class);
+Route::post('/appointmentDate',[AppointmentController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
